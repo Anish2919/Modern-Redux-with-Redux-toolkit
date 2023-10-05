@@ -1,0 +1,42 @@
+# createSelector API from the react-toolkit 
+
+
+In simple terms, `createSelector` is a utility function provided by the Reselect library, which is often used in conjunction with React and Redux. Its main purpose is to help optimize the performance of Redux applications by memoizing the results of selector functions.
+
+Here's a summary of what `createSelector` does:
+
+1. **Memoization**: It helps prevent unnecessary re-computation of data. When you have complex state and need to derive some values from it (like computing totals or filtering data), you can create a selector using `createSelector`. This selector remembers the input arguments it was called with and the result it produced. If you call it again with the same inputs, it returns the cached result instead of re-calculating it. This can greatly improve the performance of your application, especially when dealing with large or frequently changing state.
+
+2. **Usage in Redux**: In Redux, selectors are typically used to extract specific pieces of data from the global state tree. They take the Redux state as an input and return a derived piece of data. For example, you might have a selector that computes the total count of items in a shopping cart.
+
+3. **Immutability and Safety**: `createSelector` works well with Redux's immutability principles. It helps ensure that if your Redux state changes, the selector knows when to recompute its result, and it does so efficiently.
+
+In your provided documentation, it mentions `createDraftSafeSelector`. This is a variation of `createSelector` that's specifically designed to work with Immer-powered reducers, which allow for mutable updates to the state within reducers. It ensures that when you use selectors inside such reducers, the selectors are aware of potential state changes and recompute their results accordingly.
+
+In essence, `createSelector` is a tool to make your Redux application more efficient by caching the results of calculations on your state, which can be especially helpful when dealing with complex or frequently changing data.
+
+
+
+
+
+# Objects 
+interface Product {
+    id: string, 
+    name: string, 
+    price: string
+}
+
+products: {[id: string]: Product} 
+
+// Object.values returns an array of values 
+Object.values(products).map(product => {
+    Console.log(`id: ${product.id}, name: ${product.name}, price: ${product.price}`); 
+}) 
+
+// Object.entries returns an array of [key, value] paris. 
+Object.entries(products).map(([key, value]) => {
+    console.log(key, value); 
+})
+ 
+
+ 
